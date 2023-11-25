@@ -31,5 +31,12 @@ with st.form("my_form"):
         student_data.update({olevel_sub:olevel_grade})
     st.form_submit_button("Submit")
 
+   
+import pandas as pd
+final_subjects = subjects.extend(olevel)
+student_df = pd.DataFrame(student_data, columns=final_subjects)
+
 if st.checkbox('Show Student Data'):
     st.write(student_data)
+    
+    
