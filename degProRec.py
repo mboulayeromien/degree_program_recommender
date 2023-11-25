@@ -29,4 +29,4 @@ with st.form("my_form"):
     english = st.write('ENGLISH LANGUAGE')
     english_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='english')
     english = st.write('MATHEMATICS')
-    maths_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='english')
+    maths_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='maths')
