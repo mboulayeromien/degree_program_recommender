@@ -24,7 +24,7 @@ with st.form("my_form"):
         # if st.checkbox('Add Subject', key=i):
         students_subjects = st.selectbox('Select Subject Title', options=sorted(subjects), key=range(i, 200))
         students_grades = st.radio('Select Grade', options=grades, key=range(i, 100))
-    student_data.update({students_subjects:students_subjects})
+    student_data.update({students_subjects:students_grades})
     st.subheader('Ordinary Level Subjects')
     english = st.write('ENGLISH LANGUAGE')
     english_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='english')
