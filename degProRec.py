@@ -33,4 +33,4 @@ with st.form("my_form"):
     student_data.update({english:english_grade, maths:maths_grade})
     
 if st.checkbox('Show Student Data'):
-    st.write(submitted)
+    st.write(student_data)
