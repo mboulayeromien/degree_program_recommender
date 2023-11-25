@@ -16,7 +16,7 @@ grades = ['A', 'B', 'C', 'D', 'E']
 students_subjects = []
 students_grades = []
 student_data = {}
-olevel = ['ENGLISH LANGUAGE', 'MATHEMATICS']
+olevel = ['O LEVEL ENGLISH LANGUAGE', 'O LEVEL MATHEMATICS']
 with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     st.subheader('Advanced Level Subjects')
