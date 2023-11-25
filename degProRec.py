@@ -17,7 +17,7 @@ students_subjects = []
 students_grades = []
 student_data = {}
 with st.form("my_form"):
-    # for i in subjects:
+    submitted = st.form_submit_button("Submit")
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
@@ -32,6 +32,5 @@ with st.form("my_form"):
     maths_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='maths')
     student_data.update({english:english_grade, maths:maths_grade})
     
-submitted = st.form_submit_button("Submit")
-    
-st.write(submitted)
+if st.checkbox('Show Student Data'):
+    st.write(submitted)
