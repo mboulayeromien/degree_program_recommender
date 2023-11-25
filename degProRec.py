@@ -27,6 +27,6 @@ with st.form("my_form"):
 
     st.subheader('Ordinary Level Subjects')
     english = st.write('ENGLISH LANGUAGE')
-    english_grade = st.radio('Select Grade', ['A', 'B', 'C'])
+    english_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='english')
     english = st.write('MATHEMATICS')
-    maths_grade = st.radio('Select Grade', ['A', 'B', 'C'])
+    maths_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='english')
