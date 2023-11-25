@@ -18,10 +18,15 @@ students_grades = []
 with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     # for i in subjects:
+    st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
         # if st.checkbox('Add Subject', key=i):
         st.selectbox('Select Subject Title', options=sorted(subjects), key=range(i, 200))
         st.radio('Select Grade', options=grades, key=range(i, 100))
 
-
+    st.subheader('Ordinary Level Subjects')
+    english = st.write('ENGLISH LANGUAGE')
+    english_grade = st.radio('Select Grade', ['A', 'B', 'C'])
+    english = st.write('MATHEMATICS')
+    maths_grade = st.radio('Select Grade', ['A', 'B', 'C'])
