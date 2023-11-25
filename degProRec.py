@@ -35,7 +35,7 @@ with st.form("my_form"):
 import pandas as pd
 final_subjects = subjects.extend(olevel)
 # final_data = dict(final_subjects, )
-student_df = pd.DataFrame(student_data)
+student_df = pd.DataFrame(student_data.items())
 
 if st.checkbox('Show Student Data'):
     st.write(student_df)
