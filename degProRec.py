@@ -37,6 +37,6 @@ final_subjects = subjects.extend(olevel)
 student_df = pd.DataFrame(student_data, columns=final_subjects)
 
 if st.checkbox('Show Student Data'):
-    st.write(student_data)
+    st.write(student_df)
     
     
