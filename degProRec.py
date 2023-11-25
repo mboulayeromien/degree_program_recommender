@@ -18,7 +18,6 @@ students_grades = []
 student_data = {}
 olevel = ['O LEVEL ENGLISH LANGUAGE', 'O LEVEL MATHEMATICS']
 with st.form("my_form"):
-    submitted = st.form_submit_button("Submit")
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
@@ -30,6 +29,7 @@ with st.form("my_form"):
         olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
         olevel_grade = st.radio('Select Grade', ['A', 'B', 'C'], key=range(i, 30) )
         student_data.update({olevel_sub:olevel_grade})
-    
+    st.form_submit_button("Submit")
+
 if st.checkbox('Show Student Data'):
     st.write(student_data)
