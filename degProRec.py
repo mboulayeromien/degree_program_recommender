@@ -32,6 +32,6 @@ with st.form("my_form"):
     maths_grade = st.radio('Select Grade', ['A', 'B', 'C'], key='maths')
     student_data.update({english:english_grade, maths:maths_grade})
     
-    submitted = st.form_submit_button("Submit")
+submitted = st.form_submit_button("Submit")
     
 st.write(submitted)
