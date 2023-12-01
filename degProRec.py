@@ -94,13 +94,10 @@ recommendations.sort(key=lambda x: x[1], reverse=True)
 if submit:
     # st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
-    st.write(recommendations)
-    st.write(user_items)
-
-
-for item, confidence in recommendations:
-    print('Item {}, confidence {:.2f}'.format(item, confidence))
-
+    # st.write(recommendations)
+    # st.write(user_items)
+    for item, confidence in recommendations:
+        st.write('Item {}, confidence {:.2f}'.format(item, confidence))
 
 with st.form('feedback'):
     st.subheader('Give Me Feedback')
