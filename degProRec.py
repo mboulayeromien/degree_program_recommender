@@ -41,6 +41,7 @@ with st.form("my_form"):
                     olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
                     olevel_grade = st.radio('Select Grade', ['A', 'B', 'C'], key=range(i, 30) )
                     student_data.update({olevel_sub:olevel_grade})
+                        
     st.form_submit_button("Submit")
 
    
