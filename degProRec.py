@@ -99,7 +99,7 @@ if submit:
     recommend = {}
     recommended = {}
     for item, confidence in recommendations:
-        recommend.update({item:confidence*100})
+        recommend.update({item.unique():confidence*100})
         # st.write('Item: ',item, 'Confidence: ', confidence*100)
     for i in recommend:
         recommended.update(i)
