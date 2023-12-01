@@ -24,12 +24,12 @@ o_subjects = []
 o_grades = []
 student_data = {}
 
-with st.form("my_form"):
+with st.form("my_form", clear_on_submit=True):
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
                 if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
-                    st.write('You should a minimum of 2 and a maximum of 5 subjects')
+                    st.warning('You should a minimum of 2 and a maximum of 5 subjects')
                 else:
                     a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
                     a_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
@@ -40,7 +40,7 @@ with st.form("my_form"):
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
                 if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
-                    st.write('You should a minimum of 4 and a maximum of 11 subjects')
+                    st.warning('You should a minimum of 4 and a maximum of 11 subjects')
                 else:
                     o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
                     o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
@@ -63,7 +63,7 @@ if submit:
         user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
         send = st.form_submit_button("Send")
         if send:
-            st.chat_message('Thank You!')
+            # st.('Thank You!')
    
 
     
