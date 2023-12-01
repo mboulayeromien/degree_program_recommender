@@ -11,15 +11,17 @@ alevel_subjects = ['ICT', 'BIOLOGY', 'GEOLOGY', 'HISTORY', 'ECONOMICS', 'GEOGRAP
             'COMMERCE AND FINANCE', 'ENGLISH LANGUAGE',
             'COMPUTER SCIENCE', 'ACCOUNTING', 'LAW', 'COMMUNICATION SKILLS', 'SECRETERIAL ADMINISTRATION',
             'ENGINEERING SCIENCE']
-grades = ['A', 'B', 'C', 'D', 'E']
+olevel_subjects = ['O ENGLISH LANGUAGE', 'O MATHEMATICS', 'O BIOLOGY', 'O GEOLOGY', 'O HISTORY', 'O ECONOMICS', 'O GEOGRAPHY', 'O MARKETING', 'O DATA PROCESSING',
+            'O BUSINESS MATHEMATICS', 'O BUSINESS MANAGEMENT', 'O PHYSICS', 'O CHEMISTRY', 'O LOGIC', 'O LITERATURE IN ENGLISH',
+            'O RELIGIOUS STUDIES', 'O ADDITIONAL MATHEMATICS', 'O FRENCH', 'O FOOD SCIENCE AND NUTRITION', 'O COMMERCE AND FINANCE', 'O ENGLISH LANGUAGE',
+            'O COMPUTER SCIENCE', 'O ACCOUNTING', 'O LAW', 'O COMMUNICATION SKILLS', 'O SECRETERIAL ADMINISTRATION', 'O ENGINEERING SCIENCE']
+alevel_grades = ['A', 'B', 'C', 'D', 'E']
+olevel_grades = ['A', 'B', 'C']
 
 students_subjects = []
 students_grades = []
 student_data = {}
-olevel = ['O ENGLISH LANGUAGE', 'O MATHEMATICS', 'O BIOLOGY', 'O GEOLOGY', 'O HISTORY', 'O ECONOMICS', 'O GEOGRAPHY', 'O MARKETING', 'O DATA PROCESSING',
-            'O BUSINESS MATHEMATICS', 'O BUSINESS MANAGEMENT', 'O PHYSICS', 'O CHEMISTRY', 'O LOGIC', 'O LITERATURE IN ENGLISH',
-            'O RELIGIOUS STUDIES', 'O ADDITIONAL MATHEMATICS', 'O FRENCH', 'O FOOD SCIENCE AND NUTRITION', 'O COMMERCE AND FINANCE', 'O ENGLISH LANGUAGE',
-            'O COMPUTER SCIENCE', 'O ACCOUNTING', 'O LAW', 'O COMMUNICATION SKILLS', 'O SECRETERIAL ADMINISTRATION', 'O ENGINEERING SCIENCE']
+
 with st.form("my_form"):
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
@@ -27,8 +29,8 @@ with st.form("my_form"):
                 if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
                     st.warn('You should a minimum of 2 and a maximum of 5 subjects')
                 else:
-                    students_subjects = st.selectbox('Select Subject Title', options=sorted(subjects), key=range(i, 200))
-                    students_grades = st.radio('Select Grade', options=grades, key=range(i, 100))
+                    students_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
+                    students_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
                     student_data.update({students_subjects:students_grades})
     st.subheader('Ordinary Level Subjects')
     
@@ -38,8 +40,8 @@ with st.form("my_form"):
             if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
                     st.warn('You should a minimum of 4 and a maximum of 11 subjects')
             else:
-                    olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
-                    olevel_grade = st.radio('Select Grade', ['A', 'B', 'C'], key=range(i, 30) )
+                    olevel_sub = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
+                    olevel_grade = st.radio('Select Grade', olevel_grades, key=range(i, 45))
                     student_data.update({olevel_sub:olevel_grade})
                         
     st.form_submit_button("Submit")
