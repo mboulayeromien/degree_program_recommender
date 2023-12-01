@@ -58,7 +58,7 @@ st.subheader('Based on the data you submitted, I recommend this to you!')
 st.write('Still Working On It...')
 st.write('Kindly Take a moment to rate my services to you')
 
-user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation? '['1', '2', '3', '4','5'].reverse())
+user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?, ['5', '4', '3', '2','1'])
 
    
 
