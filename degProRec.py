@@ -50,14 +50,14 @@ with st.form("my_form"):
     if st.checkbox('Show My Data'):
         st.write(student_data)
                         
-    st.form_submit_button("Submit")
+    submit = st.form_submit_button("Submit")
 # import pandas as pd
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
 
 
-if st.form_submit_button:
-    st.warning('Data Submitted Sucessfully!')
+if submit:
+    # st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
 
@@ -75,3 +75,29 @@ with st.form('feedback'):
 # for i in subjects:
 #     if i == students_subjects:
         
+from streamlit_modal import Modal
+
+import streamlit.components.v1 as components
+
+
+modal = Modal("Demo Modal")
+open_modal = st.button("Open")
+if open_modal:
+    modal.open()
+
+if modal.is_open():
+    with modal.container():
+        st.write("Text goes here")
+
+        html_string = '''
+        <h1>HTML string in RED</h1>
+
+        <script language="javascript">
+          document.querySelector("h1").style.color = "red";
+        </script>
+        '''
+        components.html(html_string)
+
+        st.write("Some fancy text")
+        value = st.checkbox("Check me")
+        st.write(f"Checkbox checked: {value}")
