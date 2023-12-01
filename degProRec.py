@@ -51,9 +51,9 @@ with st.form("my_form"):
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
 
-if st.checkbox('Show Student Data') and submit:
+if st.checkbox('Show Student Data'):
     st.write(student_data)
-# if submit:
+if submit:
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
 
@@ -63,7 +63,7 @@ if st.checkbox('Show Student Data') and submit:
         user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
         send = st.form_submit_button("Send")
         if send:
-            st.write('Thank you!')
+            st.chat_message('Thank You!')
    
 
     
