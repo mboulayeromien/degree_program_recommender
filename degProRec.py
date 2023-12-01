@@ -53,21 +53,6 @@ with st.form("my_form"):
 # import pandas as pd
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
-
-
-if submit:
-    # st.warning('Data Submitted Sucessfully!')
-    st.subheader('Based on the data you submitted, I recommend this to you!')
-    st.write('Still Working On It...')
-
-with st.form('feedback'):
-    st.subheader('Give Me Feedback')
-    # st.write('Kindly Take a moment to rate my services to you')
-    user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
-    send = st.form_submit_button("Send")
-    if send:
-        pass
-            # st.('Thank You!')
    
 # Import the libraries
 import pandas as pd
@@ -104,6 +89,21 @@ for i in range(len(rules)):
 recommendations.sort(key=lambda x: x[1], reverse=True)
 
 # Print the recommendations
-st.write('Recommendations for you')
+if submit:
+    # st.warning('Data Submitted Sucessfully!')
+    st.subheader('Based on the data you submitted, I recommend this to you!')
+    st.write(recommendations)
+
+
 for item, confidence in recommendations:
     print('Item {}, confidence {:.2f}'.format(item, confidence))
+
+
+with st.form('feedback'):
+    st.subheader('Give Me Feedback')
+    # st.write('Kindly Take a moment to rate my services to you')
+    user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
+    send = st.form_submit_button("Send")
+    if send:
+        pass
+            # st.('Thank You!')
