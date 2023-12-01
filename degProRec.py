@@ -80,30 +80,30 @@ print(rules)
 # user_id = 1
 # user_items = set(df.columns[df.loc[user_id] == 1])
 user_items = set(student_data.keys())
-recommendations = []
+recommendations = {}
 for i in range(len(rules)):
     X = set(rules['antecedents'].iloc[i])
     Y = set(rules['consequents'].iloc[i])
     if X.issubset(user_items) and Y.isdisjoint(user_items):
-        recommendations.append((list(Y)[0], rules['confidence'].iloc[i]))
+        recommendations.update((list(Y)[0]: rules['confidence'].iloc[i]))
 
 # Sort the recommendations by confidence
-recommendations.sort(key=lambda x: x[1], reverse=True)
+# recommendations.sort(key=lambda x: x[1], reverse=True)
 
 # Print the recommendations
 if submit:
     # st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
-    # st.write(recommendations)
+    st.write(recommendations)
     # st.write(user_items)
     recommend = {}
     recommended = {}
-    for item, confidence in recommendations:
-        recommend.update({item.unique():confidence*100})
-        # st.write('Item: ',item, 'Confidence: ', confidence*100)
-    for i in recommend:
-        recommended.update(i)
-        st.write(recommended)
+    # for item, confidence in recommendations:
+    #     recommend.update({item:confidence*100})
+    #     # st.write('Item: ',item, 'Confidence: ', confidence*100)
+    # for i in recommend:
+    #     recommended.update(i)
+    #     st.write(recommended)
 
 with st.form('feedback'):
     st.subheader('Give Me Feedback')
