@@ -97,7 +97,7 @@ if submit:
     # st.write(recommendations)
     # st.write(user_items)
     for item, confidence in recommendations:
-        st.write('Item {}, confidence {:.2f}'.format(item, confidence))
+        st.write('Item',item, 'Confidence', confidence)
 
 with st.form('feedback'):
     st.subheader('Give Me Feedback')
