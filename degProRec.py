@@ -34,9 +34,9 @@ with st.form("my_form"):
     for i in range(1, no_subjects + 1):
             if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
                     st.warn('You should a minimum of 4 and a maximum of 11 subjects')
-        olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
-        olevel_grade = st.radio('Select Grade', ['A', 'B', 'C'], key=range(i, 30) )
-        student_data.update({olevel_sub:olevel_grade})
+                    olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
+                    olevel_grade = st.radio('Select Grade', ['A', 'B', 'C'], key=range(i, 30) )
+                    student_data.update({olevel_sub:olevel_grade})
     st.form_submit_button("Submit")
 
    
