@@ -22,9 +22,10 @@ a_subjects = []
 a_grades = []
 o_subjects = []
 o_grades = []
-student_data = {}
+
 
 with st.form("my_form"):
+    student_data = {}
     # Collect A Level subjects from student
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
