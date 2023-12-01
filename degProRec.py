@@ -63,6 +63,7 @@ if submit:
         user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
         send = st.form_submit_button("Send")
         if send:
+            pass
             # st.('Thank You!')
    
 
