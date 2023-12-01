@@ -94,7 +94,7 @@ for i in range(len(rules)):
 if submit:
     # st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
-    st.write(sorted(recommendations))
+    st.write(recommendations)
     # st.write(user_items)
     recommend = {}
     recommended = {}
