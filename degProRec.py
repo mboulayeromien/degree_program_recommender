@@ -56,7 +56,7 @@ df = pd.DataFrame()
 student_df = pd.DataFrame(student_data.items())
 
 if st.checkbox('Show Student Data'):
-    st.write(student_df)
+    st.write(student_data)
     
 # for i in subjects:
 #     if i == students_subjects:
