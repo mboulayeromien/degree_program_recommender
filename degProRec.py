@@ -29,7 +29,7 @@ with st.form("my_form", clear_on_submit=True):
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
-        st.warning('You should a minimum of 2 and a maximum of 5 subjects')
+        st.warning('You should enter a minimum of 2 and a maximum of 5 subjects')
     else:   
         for i in range(1, no_subjects + 1):
             a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
@@ -40,7 +40,7 @@ with st.form("my_form", clear_on_submit=True):
     st.subheader('Ordinary Level Subjects')      
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
     if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
-        st.warning('You should a minimum of 4 and a maximum of 11 subjects')
+        st.warning('You should enter a minimum of 4 and a maximum of 11 subjects')
     else:
         for i in range(1, no_subjects + 1):     
             o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
@@ -58,13 +58,13 @@ if submit:
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
 
-    with st.form('feedback'):
-        st.subheader('Give Me Feedback')
-        # st.write('Kindly Take a moment to rate my services to you')
-        user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
-        send = st.form_submit_button("Send")
-        if send:
-            pass
+with st.form('feedback'):
+    st.subheader('Give Me Feedback')
+    # st.write('Kindly Take a moment to rate my services to you')
+    user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
+    send = st.form_submit_button("Send")
+    if send:
+        pass
             # st.('Thank You!')
    
 
