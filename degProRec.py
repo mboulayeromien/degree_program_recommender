@@ -43,7 +43,7 @@ with st.form("my_form"):
                     st.write('You should a minimum of 4 and a maximum of 11 subjects')
             else:
                     o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
-                    o_gradse = st.radio('Select Grade', olevel_grades, key=range(i, 45))
+                    o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
                     student_data.update({o_subjects:o_grades})
                         
     st.form_submit_button("Submit")
