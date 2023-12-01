@@ -18,8 +18,10 @@ olevel_subjects = ['O ENGLISH LANGUAGE', 'O MATHEMATICS', 'O BIOLOGY', 'O GEOLOG
 alevel_grades = ['A', 'B', 'C', 'D', 'E']
 olevel_grades = ['A', 'B', 'C']
 
-students_subjects = []
-students_grades = []
+a_subjects = []
+a_grades = []
+o_subjects = []
+o_grades = []
 student_data = {}
 
 with st.form("my_form"):
@@ -27,10 +29,10 @@ with st.form("my_form"):
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
                 if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
-                    st.warn('You should a minimum of 2 and a maximum of 5 subjects')
+                    st.write('You should a minimum of 2 and a maximum of 5 subjects')
                 else:
-                    students_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
-                    students_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
+                    a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
+                    a_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
                     student_data.update({students_subjects:students_grades})
     st.subheader('Ordinary Level Subjects')
     
@@ -38,17 +40,17 @@ with st.form("my_form"):
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
             if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
-                    st.warn('You should a minimum of 4 and a maximum of 11 subjects')
+                    st.write('You should a minimum of 4 and a maximum of 11 subjects')
             else:
-                    olevel_sub = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
-                    olevel_grade = st.radio('Select Grade', olevel_grades, key=range(i, 45))
+                    o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
+                    o_gradse = st.radio('Select Grade', olevel_grades, key=range(i, 45))
                     student_data.update({olevel_sub:olevel_grade})
                         
     st.form_submit_button("Submit")
 
    
 import pandas as pd
-final_subjects = subjects.extend(olevel)
+# final_subjects = subjects.extend(olevel)
 # final_data = dict(final_subjects, )
 df = pd.DataFrame()
 student_df = pd.DataFrame(student_data.items())
