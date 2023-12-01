@@ -57,6 +57,7 @@ with st.form("my_form"):
 
 
 if submit:
+    st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
 
