@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 st.title('UB Degree Program Recommender')
 st.header('DEGREE PROGRAM RECOMMENDATION SYSTEM FOR THE UNIVERSITY OF BUEA')
 alevel_subjects = ['ICT', 'BIOLOGY', 'GEOLOGY', 'HISTORY', 'ECONOMICS', 'GEOGRAPHY', 'MARKETING', 'DATA PROCESSING',
@@ -70,34 +69,41 @@ with st.form('feedback'):
         pass
             # st.('Thank You!')
    
+# Import the libraries
+import pandas as pd
+from mlxtend.frequent_patterns import apriori, association_rules
 
-    
-# for i in subjects:
-#     if i == students_subjects:
-        
-from streamlit_modal import Modal
+# Load the transaction data as a pandas dataframe
+df = pd.read_excel('prepared_alevel.xlsx')
 
-import streamlit.components.v1 as components
+# Convert the dataframe into a binary matrix
+# df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
+df[df > 0] = 1
 
+# Apply the Apriori algorithm to find frequent itemsets with minimum support of 0.1
+frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
 
-modal = Modal("Demo Modal")
-open_modal = st.button("Open")
-if open_modal:
-    modal.open()
+# Generate association rules with minimum confidence of 0.5
+rules = association_rules(frequent_itemsets, metric='confidence', min_threshold=0.5)
 
-if modal.is_open():
-    with modal.container():
-        st.write("Text goes here")
+# Print the rules
+print(rules)
 
-        html_string = '''
-        <h1>HTML string in RED</h1>
+# Make recommendations for user 1
+# user_id = 1
+# user_items = set(df.columns[df.loc[user_id] == 1])
+user_items = set(student_data.keys())
+recommendations = []
+for i in range(len(rules)):
+    X = set(rules['antecedents'].iloc[i])
+    Y = set(rules['consequents'].iloc[i])
+    if X.issubset(user_items) and Y.isdisjoint(user_items):
+        recommendations.append((list(Y)[0], rules['confidence'].iloc[i]))
 
-        <script language="javascript">
-          document.querySelector("h1").style.color = "red";
-        </script>
-        '''
-        components.html(html_string)
+# Sort the recommendations by confidence
+recommendations.sort(key=lambda x: x[1], reverse=True)
 
-        st.write("Some fancy text")
-        value = st.checkbox("Check me")
-        st.write(f"Checkbox checked: {value}")
+# Print the recommendations
+st.write('Recommendations for you')
+for item, confidence in recommendations:
+    st.write('Item {}, confidence {:.2f}'.format(item, confidence))
