@@ -46,14 +46,15 @@ with st.form("my_form", clear_on_submit=True):
             o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
             o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
             student_data.update({o_subjects:o_grades})
+    if st.checkbox('Show My Data'):
+        st.write(student_data)
                         
     submit = st.form_submit_button("Submit")
 # import pandas as pd
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
 
-if st.checkbox('Show Student Data'):
-    st.write(student_data)
+
 if submit:
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
