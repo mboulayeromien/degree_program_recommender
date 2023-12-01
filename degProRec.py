@@ -1,7 +1,11 @@
 import streamlit as st
+from mlxtend.frequent_patterns import apriori, association_rules
+import pandas as pd
 
 st.title('UB Degree Program Recommender')
 st.header('DEGREE PROGRAM RECOMMENDATION SYSTEM FOR THE UNIVERSITY OF BUEA')
+
+# Defining system constants and variables
 alevel_subjects = ['ICT', 'BIOLOGY', 'GEOLOGY', 'HISTORY', 'ECONOMICS', 'GEOGRAPHY', 'MARKETING', 'DATA PROCESSING',
             'BUSINESS MATHEMATICS', 'BUSINESS MANAGEMENT',
             'PHYSICS', 'MATHEMATICS AND MECHANICS', 'CHEMISTRY', 'PHILOSOPHY', 'LITERATURE IN ENGLISH',
@@ -22,8 +26,8 @@ a_grades = []
 o_subjects = []
 o_grades = []
 
-
-with st.form("my_form"):
+# Form design
+with st.form("data_collection_form"):
     student_data = {}
     # Collect A Level subjects from student
     st.subheader('Advanced Level Subjects')
@@ -50,22 +54,18 @@ with st.form("my_form"):
         st.write(student_data)
                         
     submit = st.form_submit_button("Submit")
-# import pandas as pd
-# df = pd.DataFrame()
-# student_df = pd.DataFrame(student_data.items())
-   
-# Import the libraries
-import pandas as pd
-from mlxtend.frequent_patterns import apriori, association_rules
+
 
 # Load the transaction data as a pandas dataframe
-
 df = pd.read_csv('prepared_alevel_csv.csv')
-df = df.astype('bool')
+
+# Drop unwanted Column
 df = df.drop('Target', axis = 1)
+
 # Convert the dataframe into a binary matrix
 # df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
 df[df > 0] = 1
+df = df.astype('bool')
 
 # Apply the Apriori algorithm to find frequent itemsets with minimum support of 0.1
 frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
@@ -74,11 +74,8 @@ frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
 rules = association_rules(frequent_itemsets, metric='confidence', min_threshold=0.5)
 
 # Print the rules
-print(rules)
+# print(rules)
 
-# Make recommendations for user 1
-# user_id = 1
-# user_items = set(df.columns[df.loc[user_id] == 1])
 user_items = set(student_data.keys())
 recommendations = {}
 for i in range(len(rules)):
@@ -87,27 +84,15 @@ for i in range(len(rules)):
     if X.issubset(user_items) and Y.isdisjoint(user_items):
         recommendations.update({list(Y)[0]: rules['confidence'].iloc[i]*100})
 
-# Sort the recommendations by confidence
-# recommendations.sort(key=lambda x: x[1], reverse=True)
 
 # Print the recommendations
 if submit:
-    # st.warning('Data Submitted Sucessfully!')
-    st.subheader('Based on the data you submitted, I recommend this to you!')
+    st.subheader('Based on the data you submitted, I recommend you also study...')
     st.write(recommendations)
-    # st.write(user_items)
-    recommend = {}
-    recommended = {}
-    # for item, confidence in recommendations:
-    #     recommend.update({item:confidence*100})
-    #     # st.write('Item: ',item, 'Confidence: ', confidence*100)
-    # for i in recommend:
-    #     recommended.update(i)
-    #     st.write(recommended)
-
+ 
+# Getting User feedback   
 with st.form('feedback'):
     st.subheader('Give Me Feedback')
-    # st.write('Kindly Take a moment to rate my services to you')
     user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
     send = st.form_submit_button("Send")
     if send:
