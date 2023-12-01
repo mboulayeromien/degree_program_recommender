@@ -85,7 +85,7 @@ for i in range(len(rules)):
     X = set(rules['antecedents'].iloc[i])
     Y = set(rules['consequents'].iloc[i])
     if X.issubset(user_items) and Y.isdisjoint(user_items):
-        recommendations.update(list(Y)[0]: rules['confidence'].iloc[i])
+        recommendations.update({list(Y)[0]: rules['confidence'].iloc[i]})
 
 # Sort the recommendations by confidence
 # recommendations.sort(key=lambda x: x[1], reverse=True)
