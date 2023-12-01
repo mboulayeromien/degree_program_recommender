@@ -33,7 +33,7 @@ with st.form("my_form"):
                 else:
                     a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
                     a_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
-                    student_data.update({students_subjects:students_grades})
+                    student_data.update({a_subjects:a_grades})
     st.subheader('Ordinary Level Subjects')
     
              
@@ -44,7 +44,7 @@ with st.form("my_form"):
             else:
                     o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
                     o_gradse = st.radio('Select Grade', olevel_grades, key=range(i, 45))
-                    student_data.update({olevel_sub:olevel_grade})
+                    student_data.update({o_subjects:o_grades})
                         
     st.form_submit_button("Submit")
 
