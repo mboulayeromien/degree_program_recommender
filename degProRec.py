@@ -47,19 +47,19 @@ with st.form("my_form"):
                     student_data.update({o_subjects:o_grades})
                         
     st.form_submit_button("Submit")
+# import pandas as pd
+# df = pd.DataFrame()
+# student_df = pd.DataFrame(student_data.items())
+
+if st.checkbox('Show Student Data'):
+    st.write(student_data)
+
 st.subheader('Based on the data you submitted, I recommend this to you!')
 st.write('Still Working On It...')
 st.write('Kindly Take a moment to rate my services to you')
 
    
-import pandas as pd
-# final_subjects = subjects.extend(olevel)
-# final_data = dict(final_subjects, )
-df = pd.DataFrame()
-student_df = pd.DataFrame(student_data.items())
 
-if st.checkbox('Show Student Data'):
-    st.write(student_data)
     
 # for i in subjects:
 #     if i == students_subjects:
