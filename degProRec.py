@@ -39,9 +39,9 @@ with st.form("my_form"):
              
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
-            if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
+                if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
                     st.write('You should a minimum of 4 and a maximum of 11 subjects')
-            else:
+                else:
                     o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
                     o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
                     student_data.update({o_subjects:o_grades})
