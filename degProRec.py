@@ -59,6 +59,7 @@ import pandas as pd
 from mlxtend.frequent_patterns import apriori, association_rules
 
 # Load the transaction data as a pandas dataframe
+@cache
 df = pd.read_csv('prepared_alevel_csv.csv')
 df = df.astype('bool')
 # Convert the dataframe into a binary matrix
