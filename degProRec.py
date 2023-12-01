@@ -50,13 +50,13 @@ with st.form("my_form"):
     if st.checkbox('Show My Data'):
         st.write(student_data)
                         
-    submit = st.form_submit_button("Submit")
+    st.form_submit_button("Submit")
 # import pandas as pd
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
 
 
-if submit:
+if st.form_submit_button:
     st.warning('Data Submitted Sucessfully!')
     st.subheader('Based on the data you submitted, I recommend this to you!')
     st.write('Still Working On It...')
