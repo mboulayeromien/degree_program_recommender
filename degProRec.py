@@ -74,7 +74,7 @@ import pandas as pd
 from mlxtend.frequent_patterns import apriori, association_rules
 
 # Load the transaction data as a pandas dataframe
-df = pd.read_excel('prepared_alevel.xlsx')
+df = pd.read_csv('prepared_alevel_csv.csv')
 
 # Convert the dataframe into a binary matrix
 # df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
