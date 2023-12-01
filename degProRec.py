@@ -38,13 +38,13 @@ with st.form("my_form", clear_on_submit=True):
     
              
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
-    for i in range(1, no_subjects + 1):
-                if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
-                    st.warning('You should a minimum of 4 and a maximum of 11 subjects')
-                else:
-                    o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
-                    o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
-                    student_data.update({o_subjects:o_grades})
+    if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
+        st.warning('You should a minimum of 4 and a maximum of 11 subjects')
+    else:
+        for i in range(1, no_subjects + 1):     
+            o_subjects = st.selectbox('Select Subject Title', sorted(olevel_subjects), key=range(i, 12))
+            o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
+            student_data.update({o_subjects:o_grades})
                         
     submit = st.form_submit_button("Submit")
 # import pandas as pd
