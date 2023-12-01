@@ -98,7 +98,7 @@ if submit:
     # st.write(user_items)
     recommended = {}
     for item, confidence in recommendations:
-        recommended.update(item:confidence*100)
+        recommended.update({item:confidence*100})
         st.write(recommended)
         # st.write('Item: ',item, 'Confidence: ', confidence*100)
 
