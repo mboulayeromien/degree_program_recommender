@@ -47,9 +47,9 @@ with st.form("my_form"):
                     student_data.update({o_subjects:o_grades})
                         
     st.form_submit_button("Submit")
-    st.subheader('Based on the data you submitted, I recommend this to you!')
-    st.write('Still Working On It...')
-    st.write('Kindly Take a moment to rate my services to you')
+st.subheader('Based on the data you submitted, I recommend this to you!')
+st.write('Still Working On It...')
+st.write('Kindly Take a moment to rate my services to you')
 
    
 import pandas as pd
