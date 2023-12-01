@@ -46,22 +46,22 @@ with st.form("my_form"):
                     o_grades = st.radio('Select Grade', olevel_grades, key=range(i, 45))
                     student_data.update({o_subjects:o_grades})
                         
-    st.form_submit_button("Submit")
+    submit = st.form_submit_button("Submit")
 # import pandas as pd
 # df = pd.DataFrame()
 # student_df = pd.DataFrame(student_data.items())
 
-if st.checkbox('Show Student Data'):
+if st.checkbox('Show Student Data') and submit:
     st.write(student_data)
+if submit:
+    st.subheader('Based on the data you submitted, I recommend this to you!')
+    st.write('Still Working On It...')
 
-st.subheader('Based on the data you submitted, I recommend this to you!')
-st.write('Still Working On It...')
-
-with st.form('feedback'):
-    st.subheader('Give me Feedback')
-    # st.write('Kindly Take a moment to rate my services to you')
-    user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
-    st.form_submit_button("Send")
+    with st.form('feedback'):
+        st.subheader('Give me Feedback')
+        # st.write('Kindly Take a moment to rate my services to you')
+        user_satisfaction = st.radio('How satisfied on a scale of 5, are you with the recommendation?', [5, 4, 3, 2, 1])
+        st.form_submit_button("Send")
 
    
 
