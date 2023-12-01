@@ -96,11 +96,14 @@ if submit:
     st.subheader('Based on the data you submitted, I recommend this to you!')
     # st.write(recommendations)
     # st.write(user_items)
+    recommend = {}
     recommended = {}
     for item, confidence in recommendations:
-        recommended.update({item:confidence*100})
-        st.write(recommended)
+        recommend.update({item:confidence*100})
         # st.write('Item: ',item, 'Confidence: ', confidence*100)
+    for i in recommend:
+        recommended.update(i)
+        st.write(recommended)
 
 with st.form('feedback'):
     st.subheader('Give Me Feedback')
