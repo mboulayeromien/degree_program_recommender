@@ -21,9 +21,12 @@ with st.form("my_form"):
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
     for i in range(1, no_subjects + 1):
-        students_subjects = st.selectbox('Select Subject Title', options=sorted(subjects), key=range(i, 200))
-        students_grades = st.radio('Select Grade', options=grades, key=range(i, 100))
-        student_data.update({students_subjects:students_grades})
+                if no_subjects < 2 or no_subjects > 5:
+                    st.write('You should a minimum of 2 and a maximum of 5 subjects')
+                else:
+                    students_subjects = st.selectbox('Select Subject Title', options=sorted(subjects), key=range(i, 200))
+                    students_grades = st.radio('Select Grade', options=grades, key=range(i, 100))
+                    student_data.update({students_subjects:students_grades})
     st.subheader('Ordinary Level Subjects')
     for i in range(1, 3):
         olevel_sub = st.selectbox('Select Subject Title', olevel, key=range(i, 10))
