@@ -25,18 +25,19 @@ o_grades = []
 student_data = {}
 
 with st.form("my_form", clear_on_submit=True):
+    # Collect A Level subjects from student
     st.subheader('Advanced Level Subjects')
     no_subjects = int(st.number_input('How Many A Level Subjects Did You Pass In:'))
-    for i in range(1, no_subjects + 1):
-                if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
-                    st.warning('You should a minimum of 2 and a maximum of 5 subjects')
-                else:
-                    a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
-                    a_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
-                    student_data.update({a_subjects:a_grades})
-    st.subheader('Ordinary Level Subjects')
-    
-             
+    if no_subjects < 2 or no_subjects > 5 or no_subjects < 0:
+        st.warning('You should a minimum of 2 and a maximum of 5 subjects')
+    else:   
+        for i in range(1, no_subjects + 1):
+            a_subjects = st.selectbox('Select Subject Title', options=sorted(alevel_subjects), key=range(i, 200))
+            a_grades = st.radio('Select Grade', options=alevel_grades, key=range(i, 100))
+            student_data.update({a_subjects:a_grades})
+   
+    # Collect O Level subjects from student
+    st.subheader('Ordinary Level Subjects')      
     no_subjects = int(st.number_input('How Many O Level Subjects Did You Pass In:'))
     if no_subjects < 4 or no_subjects > 11 or no_subjects < 0:
         st.warning('You should a minimum of 4 and a maximum of 11 subjects')
