@@ -106,4 +106,4 @@ recommendations.sort(key=lambda x: x[1], reverse=True)
 # Print the recommendations
 st.write('Recommendations for you')
 for item, confidence in recommendations:
-    st.write('Item {}, confidence {:.2f}'.format(item, confidence))
+    print('Item {}, confidence {:.2f}'.format(item, confidence))
