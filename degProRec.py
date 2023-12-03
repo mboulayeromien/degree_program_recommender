@@ -64,12 +64,12 @@ df = pd.read_csv('prepared_alevel_csv.csv')
 # Drop unwanted Column
 df = df.drop('Target', axis = 1)
 
-df = df.fillna(0)
+# df = df.fillna(0)
 # df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
 
 # Convert the dataframe into a binary matrix
 df = df.astype('bool')
-df[df > 0] = 1
+df[df > 0] =bool(1)
 
 # Apply the Apriori algorithm to find frequent itemsets with minimum support of 0.1
 frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
