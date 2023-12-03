@@ -66,6 +66,7 @@ df = df.drop('Target', axis = 1)
 # Convert the dataframe into a binary matrix
 # df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
 
+
 # df = df.astype('bool')
 # df[df > 0] = 1
 
@@ -74,7 +75,7 @@ df = df.drop('Target', axis = 1)
 
 # Generate association rules with minimum confidence of 0.5
 # rules = association_rules(frequent_itemsets, metric='confidence', min_threshold=0.5)
-frequent_itemsets, rules = apriori(df, metric='confidence', min_threshold=0.5)
+frequent_itemsets, rules = apriori(df, output_transaction_ids=True)
 
 # Print the rules
 # print(rules)
