@@ -1,6 +1,7 @@
 import streamlit as st
-from mlxtend.frequent_patterns import apriori, association_rules
+# from mlxtend.frequent_patterns import apriori, association_rules
 import pandas as pd
+from efficient_apriori import apriori
 
 st.title('UB Degree Program Recommender')
 st.header('DEGREE PROGRAM RECOMMENDATION SYSTEM FOR THE UNIVERSITY OF BUEA')
@@ -64,14 +65,16 @@ df = df.drop('Target', axis = 1)
 
 # Convert the dataframe into a binary matrix
 # df = df.pivot(index='user_id', columns='item_id', values='rating').fillna(0)
-df = df.astype('bool')
-df[df > 0] = 1
+
+# df = df.astype('bool')
+# df[df > 0] = 1
 
 # Apply the Apriori algorithm to find frequent itemsets with minimum support of 0.1
-frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
+# frequent_itemsets = apriori(df, min_support=0.1, use_colnames=True)
 
 # Generate association rules with minimum confidence of 0.5
-rules = association_rules(frequent_itemsets, metric='confidence', min_threshold=0.5)
+# rules = association_rules(frequent_itemsets, metric='confidence', min_threshold=0.5)
+frequent_itemsets, rules = apriori(df, metric='confidence', min_threshold=0.5)
 
 # Print the rules
 # print(rules)
