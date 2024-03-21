@@ -49,3 +49,4 @@ with st.form("data_collection_form"):
         st.write(student_data)
                         
     submit = st.form_submit_button("Submit")
+    
